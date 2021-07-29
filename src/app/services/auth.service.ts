@@ -32,7 +32,6 @@ export class AuthService {
     }).snapshotChanges().pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as IUser;
-        data.id = action.payload.doc.id;
         if (data!=null) this.setUser(data);
         return data;
       });
@@ -40,11 +39,11 @@ export class AuthService {
   }
 
   loginFirebaseEmail(email: string, pwd: string): Promise<auth.UserCredential> {
-    return this.afsAuth.auth.signInWithEmailAndPassword(email, pwd);
+    return this.afsAuth.signInWithEmailAndPassword(email, pwd);
   }
 
   loginGoogle(): Promise<auth.UserCredential> {
-    return this.afsAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    return this.afsAuth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
   public checkUser(user: IUser): Observable<IUser[]> {
@@ -56,7 +55,6 @@ export class AuthService {
     }).snapshotChanges().pipe(map(changes => {
       return changes.map(action => {
         const data = action.payload.doc.data() as IUser;
-        data.id = action.payload.doc.id;
         return data;
       });
     }));
@@ -74,7 +72,7 @@ export class AuthService {
   }
 
   siginFirebaseEmail(email:string, pwd:string):Promise<auth.UserCredential>{
-    return this.afsAuth.auth.createUserWithEmailAndPassword(email,pwd);
+    return this.afsAuth.createUserWithEmailAndPassword(email,pwd);
   }
 
   public setUser(user: IUser): void {
@@ -89,8 +87,8 @@ export class AuthService {
     localStorage.setItem('currentUser', user_string);
   }
 
-  public logOut(): void{
+  public logOut(): Promise<void>{
     localStorage.removeItem('currentUser');
-    this.afsAuth.auth.signOut();  
+    return this.afsAuth.signOut();
   }
 }

@@ -19,7 +19,7 @@
             <p class="error">{{ getErrorLogin('pwd')}}</p>
 
             <div class='buttonContainer' style='text-align: center'>
-              <button class="btnRegister" type="submit" color='primary' mat-raised-button [disabled]="LoginForm.invalid" [class.spinner]="boolSpinner">
+              <button class="btnRegister" type="submit" color='primary' mat-raised-button [disabled]="LoginForm.invalid || boolSpinner" [class.spinner]="boolSpinner">
                 <mat-icon>account_circle</mat-icon> ACCEDER
               </button>              
             </div>

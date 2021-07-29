@@ -2,9 +2,10 @@ import { ApiService } from 'src/app/services/api.service';
 import { IUser } from 'src/app/models/IUser';
 import { ICesta } from 'src/app/models/ICesta';
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatIconRegistry } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Component({
   selector: 'app-cesta',

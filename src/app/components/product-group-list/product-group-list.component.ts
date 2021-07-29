@@ -4,9 +4,9 @@ import { ICesta } from 'src/app/models/ICesta';
 import { IGrupo } from 'src/app/models/IGrupo';
 import { ApiService } from 'src/app/services/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
 import { IProducto } from 'src/app/models/IProducto';
 import { ProductGroupComponent } from '../product-group/product-group.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-group-list',

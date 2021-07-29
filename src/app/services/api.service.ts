@@ -19,7 +19,6 @@ export class ApiService {
         return null;
       } else {
         const data = action.payload.data() as ICesta;
-        data.id = action.payload.id;
         return data;
       }
     }
@@ -41,7 +40,6 @@ export class ApiService {
       .pipe(map(changes => {
         return changes.map(action => {
           const data = action.payload.doc.data() as IGrupo;
-          data.id = action.payload.doc.id;
           return data;
         });
       }));
@@ -53,7 +51,6 @@ export class ApiService {
         return null;
       } else {
         const data = action.payload.data() as IGrupo;
-        data.id = action.payload.id;
         return data;
       }
     }

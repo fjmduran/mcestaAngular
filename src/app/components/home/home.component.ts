@@ -6,9 +6,9 @@ import { IGrupo } from './../../models/IGrupo';
 import { ICesta } from './../../models/ICesta';
 import { ApiService } from './../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { Subscription, empty } from 'rxjs';
-import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   private idCesta:string;
   private user:IUser;
   public msgEmpty:string='La cesta está vacía';
-
+  
   constructor(private auth:AuthService, private api:ApiService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
@@ -91,7 +91,8 @@ export class HomeComponent implements OnInit {
 
   public addProduct():void{    
     const dialogRef = this.dialog.open(SelectProductsListComponent, {
-      width: '90%',  
+      width: '90%',
+      maxWidth: '400px',
       data: { productos: this.productos }
     });
     dialogRef.afterClosed().subscribe(result => {

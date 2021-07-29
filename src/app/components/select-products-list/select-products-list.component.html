@@ -13,13 +13,12 @@
 
 <div mat-dialog-content>
   <div class="bodyDialog">
-    <div *ngFor="let p of productos" class="mat-elevation-z5 containerProduct">
+    <div *ngFor="let p of productosFiltered" class="mat-elevation-z5 containerProduct">
       {{ p.nombre }}
       <div class="check">
         <mat-checkbox
           type="checkbox"
           color="primary"
-          [(checked)]="p.pendiente"
           (change)="OnChange($event, p)"
         ></mat-checkbox>
       </div>
@@ -27,8 +26,8 @@
   </div>
 </div>
 <div mat-dialog-actions style="float: right">
-  <button class="btn btnCerrar" mat-button mat-dialog-close>Cerrar</button>
-  <button class="btn btnSave" mat-button mat-dialog-close (click)="onSave()">
-    Guardar
+  <button class="btn btnCerrar" mat-raised-button mat-dialog-close><mat-icon>clear</mat-icon> Cerrar</button>
+  <button class="btn btnSave" mat-raised-button mat-dialog-close color="primary" (click)="onSave()">
+    <mat-icon>save</mat-icon> Guardar
   </button>
 </div>

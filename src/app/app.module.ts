@@ -6,13 +6,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModules } from './material.module';
 
 //FIREBASE
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 
@@ -34,6 +33,7 @@ import { CestasComponent } from './components/cestas/cestas.component';
 import { CestaComponent } from './components/cesta/cesta.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FryptoComponent } from './components/frypto/frypto.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -46,8 +46,10 @@ import { FryptoComponent } from './components/frypto/frypto.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+    }),
     MaterialModules,
     AngularFirestoreModule, AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -55,10 +57,8 @@ import { FryptoComponent } from './components/frypto/frypto.component';
     FormsModule,
     ReactiveFormsModule, HttpClientModule
   ],
-  entryComponents: [
-    GroupComponent, ProductGroupComponent, SelectProductsListComponent,CestaComponent, ConfirmacionComponent
-  ],
-  providers: [AngularFireAuth, AngularFirestoreModule],
+  entryComponents: [],
+  providers: [AngularFireAuth, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

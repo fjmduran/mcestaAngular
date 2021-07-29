@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "mcesta"
+  },
+  "targets": {
+    "mcesta": {
+      "hosting": {
+        "mcesta": [
+          "mcesta"
+        ]
+      }
+    }
   }
 }

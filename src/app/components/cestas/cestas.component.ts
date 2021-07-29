@@ -5,8 +5,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { IUser } from './../../models/IUser';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatSnackBar, MatDialog } from '@angular/material';
 import { CestaComponent } from '../cesta/cesta.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cestas',

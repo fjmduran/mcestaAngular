@@ -1,11 +1,10 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav-content>
+
     <mat-toolbar class="mToolbar">
       <mat-toolbar-row>
         <button mat-icon-button routerLink='/download'>
           <mat-icon>cloud_download</mat-icon>
         </button>
-        <span>v0.9.5</span>
+        <span>v0.9.6</span>
         <span class="espacio"></span>
         <div *ngIf="!userOK">
           <button mat-icon-button routerLink='/login'>
@@ -37,5 +36,3 @@
       <ng-content></ng-content>
     </div>
     <!-- <div class='footer'></div> -->
-  </mat-sidenav-content>
-</mat-sidenav-container>

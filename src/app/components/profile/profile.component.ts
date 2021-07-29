@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { IUser } from 'src/app/models/IUser';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'profile',
@@ -51,8 +51,8 @@ export class ProfileComponent implements OnInit {
     return error;
   }
 
-  cierraSesion(): void {
-    this.auth.logOut();
+  async cierraSesion(): Promise<void> {
+    await this.auth.logOut();    
     this.router.navigate(['/login'])
   }
 
