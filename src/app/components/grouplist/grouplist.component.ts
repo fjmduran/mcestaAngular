@@ -30,7 +30,7 @@ export class GrouplistComponent implements OnInit {
   constructor(private api: ApiService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit() {
-    let id: string = this.route.snapshot.paramMap.get('id');  
+    const id:string = this.route.snapshot.paramMap.get('id');    
  
     this.cesta$ = this.api.GetCesta(id).subscribe(data => {
       this.cesta = data;

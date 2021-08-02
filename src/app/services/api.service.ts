@@ -19,7 +19,8 @@ export class ApiService {
         return null;
       } else {
         const data = action.payload.data() as ICesta;
-        return data;
+        const id = action.payload.id;
+        return {id, ...data};
       }
     }
     ));

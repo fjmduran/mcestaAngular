@@ -15,7 +15,7 @@
         
     </div>
     <div mat-dialog-actions style="float: right">
-        <button class='btn btnCerrar' mat-button mat-dialog-close>Cerrar</button>
-        <button class='btn btnGuardar' (click)="Save()" mat-raised-button [disabled]="mForm.invalid">Guardar</button> <!-- type="submit" -->
+        <button type="button" class='btn btnCerrar' mat-button mat-dialog-close><mat-icon>clear</mat-icon> Cerrar</button>
+        <button type="submit" class='btn btnGuardar' color="primary" (click)="Save()" mat-raised-button [disabled]="mForm.invalid"><mat-icon>save</mat-icon> Guardar</button>
     </div>
 </form>
