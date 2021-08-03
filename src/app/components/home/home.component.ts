@@ -5,7 +5,7 @@ import { SelectProductsListComponent } from './../select-products-list/select-pr
 import { IGrupo } from './../../models/IGrupo';
 import { ICesta } from './../../models/ICesta';
 import { ApiService } from './../../services/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   private user:IUser;
   public msgEmpty:string='La cesta está vacía';
   
-  constructor(private auth:AuthService, private api:ApiService, public dialog: MatDialog, private router: Router) { }
+  constructor(private auth:AuthService, private api:ApiService, public dialog: MatDialog, private router: Router,private ngZone: NgZone) { }
 
   ngOnInit() {
     this.user=this.auth.getCurrentUser();
@@ -38,6 +38,21 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     } 
+
+    this.auth.afsAuth.onAuthStateChanged((user) => {
+      if (!user) {
+        this.ngZone.run(() => {
+          this.router.navigateByUrl("/auth");
+        });
+        return;
+      } else {
+        this.loadCesta();
+      }
+    });
+    
+  }
+
+  private loadCesta():void{
     if(this.user.cesta==null){
       //no hay cesta predeterminada, abro la pantalla de listado de cestas
       this.router.navigate(['/cestas']);
