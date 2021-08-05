@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
     this.auth.afsAuth.onAuthStateChanged((user) => {
       if (!user) {
         this.ngZone.run(() => {
-          this.router.navigateByUrl("/auth");
+          this.router.navigateByUrl("/login");
         });
         return;
       } else {

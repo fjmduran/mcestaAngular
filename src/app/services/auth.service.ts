@@ -24,7 +24,7 @@ export class AuthService {
       this.userFirebase = user;
       if (!this.userFirebase) {
         this.ngZone.run(() => {
-          this.router.navigateByUrl("/auth");
+          this.router.navigateByUrl("/login");
         });
         return;
       } else {
